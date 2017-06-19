@@ -1,0 +1,17 @@
+version: '3'
+
+services:
+  nginx-proxy:
+    image: jwilder/nginx-proxy
+    container_name: nginx-proxy
+    ports:
+      - "80:80"
+    networks:
+      - nginx-proxy
+    volumes:
+      - /var/run/docker.sock:/tmp/docker.sock:ro
+
+networks:
+  nginx-proxy:
+    external:
+      name: nginx-proxy
